@@ -17,6 +17,11 @@ header {
     text-align: center;
 }
 
+/* הוספת הצבע הלבן לכותרת הראשית */
+header h1 {
+    color: white; /* משנה את צבע הטקסט ללבן */
+}
+
 nav ul {
     list-style: none;
     padding: 0;
