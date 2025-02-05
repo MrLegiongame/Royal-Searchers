@@ -12,35 +12,28 @@
             line-height: 1.6;
             background-color: #f9f9f9;
             color: #333;
-            direction: rtl; /* Set the entire page to RTL */
-            text-align: right; /* Align text to the right */
+            direction: rtl;
+            text-align: right;
         }
 
         /* Header & Navigation */
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: center;
-        }
-		
-		img {
-            max-width: 95%;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 10px 0;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-direction: row-reverse; /* Ensure RTL layout for navigation */
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         nav ul li {
@@ -50,9 +43,10 @@
         nav ul li a {
             color: white;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 10px 20px;
             background-color: #333;
-            border-radius: 5px;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
 
         nav ul li a:hover {
@@ -64,8 +58,8 @@
             max-width: 800px;
             margin: 20px auto;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -73,26 +67,41 @@
             color: #4CAF50;
         }
 
-        ul, table {
-            margin: 15px 0;
+        /* FAQ Section */
+        .qa-section {
+            margin: 20px 0;
         }
 
-        /* Table Design */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: right; /* Right-align table text */
-        }
-
-        table th {
-            background-color: #4CAF50;
+        .question {
+            background: #007BFF;
             color: white;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .question:hover {
+            background: #0056b3;
+        }
+
+        .answer {
+            display: none;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 6px;
+            margin-top: 5px;
+        }
+
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         /* Footer */
@@ -102,166 +111,820 @@
             font-size: 0.9em;
             color: #777;
         }
-
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .qa-section {
-            margin: 20px;
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-        .question {
-            margin: 10px 0;
-            cursor: pointer;
-            color: #007BFF;
-        }
-        .answer {
-            margin: 10px 20px;
-        }
-        .link {
-            text-decoration: none;
-            color: inherit;
-        }
-        .link:hover {
-            text-decoration: underline;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px 0;
-        }
     </style>
     <script>
         function toggleAnswer(id) {
             const element = document.getElementById(id);
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
+            element.style.display = (element.style.display === "block") ? "none" : "block";
         }
     </script>
 </head>
 <body>
     <header>
-        <h1>הגשה סופית</h1>
-		<nav>
-			<ul>
-				<li><a href="index.html">דף פתיחה</a></li>
-				<li><a href="final.html">הגשה סופית</a></li>
-				<li><a href="student1.html">יותם גלעד</a></li>
-				<li><a href="student2.html">תומר בן לולו</a></li>
-				<li><a href="student3.html">יעקב שטרית</a></li>
-				<li><a href="student4.html">לאוניד ויאושקוב</a></li>
-			</ul>
-		</nav>
+        הגשה סופית
     </header>
-    <main>
+    <nav>
+        <ul>
+            <li><a href="index.html">דף פתיחה</a></li>
+            <li><a href="final.html">הגשה סופית</a></li>
+            <li><a href="student1.html">יותם גלעד</a></li>
+            <li><a href="student2.html">תומר בן לולו</a></li>
+            <li><a href="student3.html">יעקב שטרית</a></li>
+            <li><a href="student4.html">לאוניד ויאושקוב</a></li>
+        </ul>
+    </nav>
     <main>
         <section class="qa-section">
-            <!-- Question 1 -->
-            <h2>שאלה 1</h2>
-            <div class="question" onclick="toggleAnswer('q1')">
-                <a href="#q1" class="link">שאלה 1</a>
-            </div>
-            <div id="q1" class="answer" style="display: block;">
-                <img src="img/q1.png" alt="שאלה 1">
-            </div>
+            <h2>שאלות ותשובות</h2>
+            
+            <!-- Questions and Answers -->
+            <div class="question" onclick="toggleAnswer('q1')">שאלה 1 - הסבר על האתר</div>
+			<div id="q1" class="answer">
+				האתר MYPROTEIN מהווה חנות אינטרנט אשר עוסקת בהלבשה , תוספי תזונה וויטמינים לספורטיים . <br>
+				המידע הזמין למשתמש הוא : שמות המוצרים , תמונות המוצרים , תיאור המוצר , הנחה על המוצר וחוות דעת ממשתמשים אחרים. <br>
+				קישור לאתר: <a href="https://www.myprotein.co.il/" target="_blank">https://www.myprotein.co.il/</a>
+			</div>
+            
+           <div class="question" onclick="toggleAnswer('q2')">שאלה 2 - שאילתות</div>
+			<div id="q2" class="answer" style="background: #f1f1f1; padding: 10px; border-radius: 6px; margin-top: 5px;">
+				<strong>שאילת 1 : Snack</strong><br>
+				<span style="color: red;">האתר אינו מחזיר רק את המוצרים שהם Snacks אלא גם מוצרים אחרים.</span><br>
+				<br>
+				<strong>המידע הדרוש למענה על השאילת:</strong><br>
+				<ul style="margin: 5px 0; padding-left: 20px;">
+					<li>תיאור המוצרים</li>
+					<li>חוות דעת על המוצר</li>
+				</ul>
+				<hr style="border: 0; height: 1px; background: #ccc; margin: 10px 0;">
+				
+				<strong>שאילת 2 : L T-shirt</strong><br>
+				<span style="color: red;">באתר חסר פילטור לפי מידת החולצה.</span><br>
+				<br>
+				<strong>המידע הדרוש למענה על השאילת:</strong><br>
+				<ul style="margin: 5px 0; padding-left: 20px;">
+					<li>תיאור המוצר</li>
+					<li>שם המוצר</li>
+				</ul>
+				<hr style="border: 0; height: 1px; background: #ccc; margin: 10px 0;">
+				
+				<strong>שאילת 3 : Mix nuts discount</strong><br>
+				<span style="color: red;">אם מחפשים שורה זו בחיפוש אנחנו עוברים לעמוד ההנחות ולא למוצרים.</span><br>
+				<br>
+				<strong>המידע הדרוש למענה על השאילת:</strong><br>
+				<ul style="margin: 5px 0; padding-left: 20px;">
+					<li>תיאור המוצר</li>
+					<li>שם המוצר</li>
+				</ul>
+			</div>
 
-            <!-- Question 2 -->
-            <h2>שאלה 2</h2>
-            <div class="question" onclick="toggleAnswer('q2')">
-                <a href="#q2" class="link">שאלה 2</a>
-            </div>
-            <div id="q2" class="answer" style="display: block;">
-                <img src="img/q2.png" alt="שאלה 2">
-            </div>
+            <div class="question" onclick="toggleAnswer('q3')">שאלה 3 - קוד הזחלן</div>
+            <div id="q3" class="answer"><img src="img/q3.png" alt="שאלה 3"></div>
 
-            <!-- Question 3 -->
-            <h2>שאלה 3</h2>
-            <div class="question" onclick="toggleAnswer('q3')">
-                <a href="#q3" class="link">שאלה 3</a>
-            </div>
-            <div id="q3" class="answer" style="display: block;">
-                <img src="img/q3.png" alt="שאלה 3">
-            </div>
+            <div class="question" onclick="toggleAnswer('q4')">שאלה 4 - טכנולוגיות שונות </div>
+			<div id="q4" class="answer">
+				<strong>📡 ספריות לעבודה עם רשת והבנת HTML:</strong><br>
+				<strong>1. requests</strong> – משמשת לשליחת בקשות HTTP (GET, POST וכו') ולקבלת נתונים מאתרי אינטרנט.<br>
+				<strong>2. BeautifulSoup</strong> (מ־bs4) – ספרייה לניתוח קוד HTML ו־XML, מאפשרת חילוץ מידע מתוך דפי אינטרנט באופן פשוט.<br>
+				<strong>3. urllib.parse.urljoin</strong> – פונקציה לחיבור נתיבים של כתובות URL, שימושית להשלמת כתובות חסרות בדפי אינטרנט.<br>
+				<br>
+				<strong>📊 מבני נתונים לעיבוד מידע:</strong><br>
+				<strong>4. defaultdict</strong> (מתוך collections) – גרסה מתקדמת של dict, המאפשרת קביעת ערך ברירת מחדל למפתחות שאינם קיימים.<br>
+				<strong>5. Counter</strong> (מתוך collections) – מחלקה לספירת מופעים של פריטים ברשימה (או בכל iterable).<br>
+				<br>
+				<strong>🔍 ספריות למניפולציה ועיבוד נתונים:</strong><br>
+				<strong>6. re</strong> – משמשת לעבודה עם ביטויים רגולריים, חיפוש ותמרון טקסט בצורה מתוחכמת.<br>
+				<strong>7. math</strong> – מספקת פונקציות מתמטיות נפוצות כמו חישובי חזקות, שורשים, לוגריתמים ועוד.<br>
+				<strong>8. numpy</strong> (נכתב כ np) – ספרייה רבת עוצמה לעבודה עם מערכים וחישובים מתמטיים, מהירה בהרבה מרשימות רגילות של Python.<br>
+				<br>
+				<strong>📱 טכנולוגיות חיפוש נתונים:</strong><br>
+				<strong>9. RAG (Retrieval-Augmented Generation)</strong> – משלב אחזור מידע עם יצירת טקסט כדי לשפר את הביצועים של מודלים לשוניים באמצעות שילוב מקורות מידע חיצוניים.<br>
+				<strong>10. PageRank</strong> – אלגוריתם שבודק את הקישורים בין דפים ומשתמש בהם כדי לדרג את חשיבות הדף במנועי חיפוש.<br>
+			</div>
 
-            <!-- Question 4 -->
-            <h2>שאלה 4</h2>
-            <div class="question" onclick="toggleAnswer('q4')">
-                <a href="#q4" class="link">שאלה 4</a>
-            </div>
-            <div id="q4" class="answer" style="display: block;">
-                <img src="img/q4.png" alt="שאלה 4">
-            </div>
+            <div class="question" onclick="toggleAnswer('q5')">שאלה 5 - הרצת שאילתות</div>
+            <div id="q5" class="answer">
+			<strong>⏳ זמן ריצת השאילתות:</strong><br>
+			<strong>Nut Mix discount</strong> - 1:52 minute<br>
+			<strong>Snack</strong> - 1:40 minute<br>
+			<strong>L T-Shirt</strong> - 1:24 minute<br>
+			<br>
+			<strong>🕒 במה תלוי זמן הריצה?</strong><br>
+			יש את זמן איסוף תוכן האתר שהוא לוקח את רוב הזמן וגם מערכת RAG שמשתמשת ב-API לוקחת יחסית הרבה זמן במהלך עיבוד נתונים ומציאת התשובה.<br>
+			<br>
+			<strong>⚡ איך ניתן לשפר את זמן הריצה?</strong><br>
+			ניתן לשפר את זמן הריצה עם יצירת מילון או קטגוריות האתר ובכך להקטין את זמן שאיבת נתונים.<br>
+			מבחינת עיבוד הנתונים אפשר להשתמש במערכת לוקאלית כמו LLAMA 3.<br>
+			</div>
 
-            <!-- Question 5 -->
-            <h2>שאלה 5</h2>
-            <div class="question" onclick="toggleAnswer('q5')">
-                <a href="#q5" class="link">שאלה 5</a>
-            </div>
-            <div id="q5" class="answer" style="display: block;">
-                <img src="img/q5.png" alt="שאלה 5">
-            </div>
+            <div class="question" onclick="toggleAnswer('q6')">שאלה 6 - inverted index</div>
+            <div id="q6" class="answer">
+				<strong>🔗 זאת רשימת הקישורים והמספור שלהם:</strong><br>
+				1: <a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a><br>
+				2: <a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a><br>
+				3: <a href="https://www.myprotein.co.il/sports-nutrition/layered-protein-bar/12116519.html" target="_blank">Layered Protein Bar</a><br>
+				4: <a href="https://www.myprotein.co.il/sports-nutrition/performance-cookie/10530674.html" target="_blank">Performance Cookie</a><br>
+				5: <a href="https://www.myprotein.co.il/sports-nutrition/protein-flapjack/11147245.html" target="_blank">Protein Flapjack</a><br>
+				6: <a href="https://www.myprotein.co.il/sports-nutrition/performance-lean-cookie/11200865.html" target="_blank">Performance Lean Cookie</a><br>
+				7: <a href="https://www.myprotein.co.il/sports-nutrition/crispy-protein-wafer/10961185.html" target="_blank">Crispy Protein Wafer</a><br>
+				8: <a href="https://www.myprotein.co.il/sports-nutrition/protein-brownie/11094927.html" target="_blank">Protein Brownie</a><br>
+				9: <a href="https://www.myprotein.co.il/sports-nutrition/lean-layered-protein-bar/13951658.html" target="_blank">Lean Layered Protein Bar</a><br>
+				10: <a href="https://www.myprotein.co.il/sports-nutrition/vegan-baked-protein-cookie/11775775.html" target="_blank">Vegan Baked Protein Cookie</a><br>
+				11: <a href="https://www.myprotein.co.il/sports-nutrition/gooey-filled-protein-cookie/11865615.html" target="_blank">Gooey Filled Protein Cookie</a><br>
+				12: <a href="https://www.myprotein.co.il/sports-nutrition/all-natural-peanut-butter/10530743.html" target="_blank">All Natural Peanut Butter</a><br>
+				13: <a href="https://www.myprotein.co.il/sports-nutrition/powdered-peanut-butter/11413392.html" target="_blank">Powdered Peanut Butter</a><br>
+				14: <a href="https://www.myprotein.co.il/sports-nutrition/oat-bakes/12191274.html" target="_blank">Oat Bakes</a><br>
+				15: <a href="https://www.myprotein.co.il/sports-nutrition/protein-granola/11091293.html" target="_blank">Protein Granola</a><br>
+				16: <a href="https://www.myprotein.co.il/sports-nutrition/flavdrops/10530471.html" target="_blank">FlavDrops</a><br>
+				17: <a href="https://www.myprotein.co.il/sports-nutrition/impact-protein-bar/13103437.html" target="_blank">Impact Protein Bar</a><br>
+				18: <a href="https://www.myprotein.co.il/sports-nutrition/popped-protein-crisps/12041688.html" target="_blank">Popped Protein Crisps</a><br>
+				19: <a href="https://www.myprotein.co.il/sports-nutrition/baked-protein-cookie/11214993.html" target="_blank">Baked Protein Cookie</a><br>
+				20: <a href="https://www.myprotein.co.il/sports-nutrition/protein-pancake-mix/10867261.html" target="_blank">Protein Pancake Mix</a><br>
+				<br>
+				<strong>📊 Inverted Index (כטבלה):</strong><br>
+				<table border="1" style="border-collapse: collapse; width: 100%;">
+					<tr><th>מילה</th><th>מספרי עמודים</th></tr>
+					<tr><td>chocol</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>protein</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>flavour</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>milk</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>tea</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>natur</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>cooki</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>vanilla</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>amount</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>product</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>banana</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>kg</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>caramel</td><td>[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>sugar</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+					<tr><td>star</td><td>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</td></tr>
+				</table>
+			</div>
 
-            <!-- Question 6 -->
-            <h2>שאלה 6</h2>
-            <div class="question" onclick="toggleAnswer('q6')">
-                <a href="#q6" class="link">שאלה 6</a>
-            </div>
-            <div id="q6" class="answer" style="display: block;">
-                <img src="img/q6.png" alt="שאלה 6">
-            </div>
+            <div class="question" onclick="toggleAnswer('q7')">שאלה 7 - חישוב TD-IDF</div>
+            <div id="q7" class="answer">
+			<strong>📐 הנוסחאות לחישוב כלל הרכיבים הם:</strong><br>
+			<img src="img/tfidf.png"><br><br>
 
-            <!-- Question 7 -->
-            <h2>שאלה 7</h2>
-            <div class="question" onclick="toggleAnswer('q7')">
-                <a href="#q7" class="link">שאלה 7</a>
-            </div>
-            <div id="q7" class="answer" style="display: block;">
-                <img src="img/q7.png" alt="שאלה 7">
-            </div>
+			<strong>📊 טבלת TF-IDF של הקישורים:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>Link</th>
+					<th>TF</th>
+					<th>IDF</th>
+					<th>TF-IDF</th>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+					<td>0.00950475</td>
+					<td>0.05129329</td>
+					<td>0.00048753</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/layered-protein-bar/12116519.html" target="_blank">Layered Protein Bar</a></td>
+					<td>0.00185787</td>
+					<td>0.05129329</td>
+					<td>0.00009529</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/performance-cookie/10530674.html" target="_blank">Performance Cookie</a></td>
+					<td>0.00532687</td>
+					<td>0.05129329</td>
+					<td>0.00027323</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/protein-flapjack/11147245.html" target="_blank">Protein Flapjack</a></td>
+					<td>0.00726072</td>
+					<td>0.05129329</td>
+					<td>0.00037242</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/performance-lean-cookie/11200865.html" target="_blank">Performance Lean Cookie</a></td>
+					<td>0.00502512</td>
+					<td>0.05129329</td>
+					<td>0.00025775</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/crispy-protein-wafer/10961185.html" target="_blank">Crispy Protein Wafer</a></td>
+					<td>0.00594273</td>
+					<td>0.05129329</td>
+					<td>0.00030482</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/protein-brownie/11094927.html" target="_blank">Protein Brownie</a></td>
+					<td>0.00471420</td>
+					<td>0.05129329</td>
+					<td>0.00024180</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/lean-layered-protein-bar/13951658.html" target="_blank">Lean Layered Protein Bar</a></td>
+					<td>0.00556586</td>
+					<td>0.05129329</td>
+					<td>0.00028549</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/vegan-baked-protein-cookie/11775775.html" target="_blank">Vegan Baked Protein Cookie</a></td>
+					<td>0.00425170</td>
+					<td>0.05129329</td>
+					<td>0.00021808</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/gooey-filled-protein-cookie/11865615.html" target="_blank">Gooey Filled Protein Cookie</a></td>
+					<td>0.00245851</td>
+					<td>0.05129329</td>
+					<td>0.00012610</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/all-natural-peanut-butter/10530743.html" target="_blank">All Natural Peanut Butter</a></td>
+					<td>0.00267916</td>
+					<td>0.05129329</td>
+					<td>0.00013742</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/powdered-peanut-butter/11413392.html" target="_blank">Powdered Peanut Butter</a></td>
+					<td>0.00290486</td>
+					<td>0.05129329</td>
+					<td>0.00014900</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/oat-bakes/12191274.html" target="_blank">Oat Bakes</a></td>
+					<td>0.00519630</td>
+					<td>0.05129329</td>
+					<td>0.00026653</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/protein-granola/11091293.html" target="_blank">Protein Granola</a></td>
+					<td>0.00131492</td>
+					<td>0.05129329</td>
+					<td>0.00006744</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-protein-bar/13103437.html" target="_blank">Impact Protein Bar</a></td>
+					<td>0.00330033</td>
+					<td>0.05129329</td>
+					<td>0.00016928</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/popped-protein-crisps/12041688.html" target="_blank">Popped Protein Crisps</a></td>
+					<td>0.00878378</td>
+					<td>0.05129329</td>
+					<td>0.00045054</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/baked-protein-cookie/11214993.html" target="_blank">Baked Protein Cookie</a></td>
+					<td>0.00589005</td>
+					<td>0.05129329</td>
+					<td>0.00030212</td>
+				</tr>
+				<tr>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/protein-pancake-mix/10867261.html" target="_blank">Protein Pancake Mix</a></td>
+					<td>0.00233508</td>
+					<td>0.05129329</td>
+					<td>0.00011977</td>
+				</tr>
+			</table>
+		</div>
 
-            <!-- Question 8 -->
-            <h2>שאלה 8</h2>
-            <div class="question" onclick="toggleAnswer('q8')">
-                <a href="#q8" class="link">שאלה 8</a>
-            </div>
-            <div id="q8" class="answer" style="display: block;">
-                <img src="img/q8.png" alt="שאלה 8">
-            </div>
+            <div class="question" onclick="toggleAnswer('q8')">שאלה 8 - Authorities and Hubs</div>
+            <div id="q8" class="answer">
+			<strong>Hubs:</strong><br>
+			דפים המשמשים כמרכזי קישורים לנושאים מסוימים. ניתן לזהות אותם באמצעות:<br>
+			- ניתוח הנתונים שמתקבלים מהפונקציה <code>get_links()</code> עבור כל URL.<br>
+			- דפים עם מספר גבוה של קישורים יוצאים נחשבים כמועמדים להיות Hubs.<br>
+			<br>
+			<strong>Authorities:</strong><br>
+			דפים שמקבלים כמות גדולה של הפניות מדפים איכותיים אחרים, כלומר, דפים שקישורים אליהם מופיעים ב-Hubs רבים.<br>
+			<br>
+			<strong>שלבי הפעולה של האלגוריתם:</strong><br>
+			<ol>
+				<li>
+					<strong>בניית מבנה קישורים:</strong>
+					<ul>
+						<li>האלגוריתם יוצר גרף קישורים מתוך הדפים שנאספו:</li>
+						<li><code>outgoing_links</code>: מכיל את רשימת הקישורים היוצאים מכל דף.</li>
+						<li><code>incoming_links</code>: מכיל את רשימת הקישורים הנכנסים לכל דף.</li>
+						<li>פונקציות כמו <code>fetch_page</code> ו־<code>get_links</code> משמשות לאיסוף דפי HTML ולשליפת קישורים מהם.</li>
+					</ul>
+				</li>
+				<li>
+					<strong>אתחול ציונים עבור Hubs ו־Authorities:</strong>
+					<ul>
+						<li>לכל דף מוקצה ציון התחלתי של <code>1.0</code> עבור Hub ו־Authority.</li>
+					</ul>
+				</li>
+				<li>
+					<strong>חישוב ציונים במספר מחזורים:</strong>
+					<ul>
+						<li><strong>עדכון ציון Authority:</strong> הציון של דף מחושב על בסיס סכום הציונים של כל ה-Hubs שמפנים אליו:</li>
+						<li><code>auth_scores[page] = sum(hub_scores[incoming] for incoming in incoming_links[page])</code></li>
+						<li><strong>נרמול ציוני Authority:</strong> כל הציונים עוברים תהליך נרמול כדי להבטיח יציבות חישובית.</li>
+						<li><strong>עדכון ציון Hub:</strong> הציון של דף מחושב על בסיס סכום ציוני ה-Authorities של הדפים שהוא מקשר אליהם:</li>
+						<li><code>hub_scores[page] = sum(auth_scores[outgoing] for outgoing in outgoing_links[page])</code></li>
+						<li><strong>נרמול ציוני Hub:</strong> כל הציונים מנורמלים בצורה דומה.</li>
+					</ul>
+				</li>
+				<li>
+					<strong>התוצאות הסופיות:</strong>
+					<ul>
+						<li>האלגוריתם מחלץ ומציג את חמשת הדפים המובילים לפי ציוני Hubs ו־Authorities.</li>
+						<li>דף מסוים ייחשב כ-Hub משמעותי אם הוא מקשר לדפים שהם Authorities חשובים.</li>
+						<li>דף ייחשב כ-Authority בולט אם הוא מקבל קישורים ממספר רב של Hubs מובילים.</li>
+					</ul>
+				</li>
+			</ol>
 
-            <!-- Question 9 -->
-            <h2>שאלה 9</h2>
-            <div class="question" onclick="toggleAnswer('q9')">
-                <a href="#q9" class="link">שאלה 9</a>
-            </div>
-            <div id="q9" class="answer" style="display: block;">
-                <img src="img/q91.png" alt="שאלה 9">
-            </div>
+			<br>
+			<strong>⏳ כמות איטרציות:</strong> Converged after 13 iterations<br>
+			
+			<br>
+			<strong>🏆 Top Hubs (pages that point to good authorities):</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>URL ID</th>
+					<th>URL</th>
+					<th>Hub Score</th>
+					<th>Number of Outgoing Links</th>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">Page 4</a></td>
+					<td>0.490958</td>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">Page 5</a></td>
+					<td>0.467078</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+					<td>0.410657</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">Page 3</a></td>
+					<td>0.253505</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>58</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+					<td>0.242443</td>
+					<td>3</td>
+				</tr>
+			</table>
 
-            <!-- Question 10 -->
-            <h2>שאלה 10</h2>
-            <div class="question" onclick="toggleAnswer('q10')">
-                <a href="#q10" class="link">שאלה 10</a>
-            </div>
-            <div id="q10" class="answer" style="display: block;">
-                <img src="img/q10.png" alt="שאלה 10">
-            </div>
+			<br>
+			<strong>🏆 Top Authorities (pages pointed to by good hubs):</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>URL ID</th>
+					<th>URL</th>
+					<th>Authority Score</th>
+					<th>Number of Incoming Links</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+					<td>0.532555</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+					<td>0.532555</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>58</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+					<td>0.288556</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>59</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+					<td>0.288556</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>60</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+					<td>0.288556</td>
+					<td>4</td>
+				</tr>
+			</table>
+		</div>
+
+            <div class="question" onclick="toggleAnswer('q9')">שאלה 9 - PageRank</div>
+            <div id="q9" class="answer">
+			<strong>🔍 Selected pages for PageRank analysis:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+			<tr>
+				<th>Page ID</th>
+				<th>URL</th>
+				<th>Links to</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a>
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a>,
+					<a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+            <td>5</td>
+            <td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a></td>
+            <td>
+                <a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+                <a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a>,
+                <a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a>,
+                <a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a>,
+                <a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>,
+                <a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a>,
+                <a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a>,
+                <a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a>,
+                <a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a>
+            </td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a>,
+					<a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a>,
+					<a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a>
+				</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+				<td>58</td>
+				<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+				<td>59</td>
+				<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+				<td>60</td>
+				<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+			<tr>
+				<td>61</td>
+				<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a></td>
+				<td>
+					<a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a>,
+					<a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a>
+				</td>
+			</tr>
+		</table>
+
+			<br>
+			<strong>🌀 PageRank values after iteration 0:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>Page ID</th>
+					<th>URL</th>
+					<th>PageRank Value</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>58</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>59</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>60</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+					<td>0.100</td>
+				</tr>
+				<tr>
+					<td>61</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a></td>
+					<td>0.100</td>
+				</tr>
+			</table>
+			
+			   <br>
+				<strong>🌀 PageRank values after iteration 1:</strong><br>
+				<table border="1" style="border-collapse: collapse; width: 100%;">
+					<tr>
+						<th>Page ID</th>
+						<th>URL</th>
+						<th>PageRank Value</th>
+					</tr>
+					<tr>
+						<td>0</td>
+						<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+						<td>0.296</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+						<td>0.014</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a></td>
+						<td>0.036</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a></td>
+						<td>0.049</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a></td>
+						<td>0.024</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+						<td>0.296</td>
+					</tr>
+					<tr>
+						<td>58</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+						<td>0.071</td>
+					</tr>
+					<tr>
+						<td>59</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+						<td>0.071</td>
+					</tr>
+					<tr>
+						<td>60</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+						<td>0.071</td>
+					</tr>
+					<tr>
+						<td>61</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a></td>
+						<td>0.071</td>
+					</tr>
+				</table>
+			    <br>
+				<strong>🌀 PageRank values after iteration 2:</strong><br>
+				<table border="1" style="border-collapse: collapse; width: 100%;">
+					<tr>
+						<th>Page ID</th>
+						<th>URL</th>
+						<th>PageRank Value</th>
+					</tr>
+					<tr>
+						<td>0</td>
+						<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+						<td>0.411</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+						<td>0.002</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a></td>
+						<td>0.014</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a></td>
+						<td>0.017</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a></td>
+						<td>0.008</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+						<td>0.411</td>
+					</tr>
+					<tr>
+						<td>58</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+						<td>0.034</td>
+					</tr>
+					<tr>
+						<td>59</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+						<td>0.034</td>
+					</tr>
+					<tr>
+						<td>60</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+						<td>0.034</td>
+					</tr>
+					<tr>
+						<td>61</td>
+						<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a></td>
+						<td>0.034</td>
+					</tr>
+				</table>
+				
+				    <br>
+					<strong>🏆 Highest PageRank after 2 iterations:</strong><br>
+					<table border="1" style="border-collapse: collapse; width: 100%;">
+						<tr>
+							<th>Page ID</th>
+							<th>URL</th>
+							<th>PageRank Value</th>
+						</tr>
+						<tr>
+							<td>0</td>
+							<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+							<td>0.411</td>
+						</tr>
+					</table>
+		</div>
+
+            <div class="question" onclick="toggleAnswer('q10')">שאלה 10 - relevance  feedback </div>
+            <div id="q10" class="answer">
+			<strong>🔍 PageRank URLs:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>Page ID</th>
+					<th>URL</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td><a href="https://www.myprotein.co.il/nutrition/healthy-food-drinks/protein-snacks.list" target="_blank">Protein Snacks</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list" target="_blank">All Tops</a></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=3" target="_blank">All Tops Page 3</a></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=4" target="_blank">All Tops Page 4</a></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td><a href="https://www.myprotein.co.il/clothing/mens/all-tops.list?pageNumber=5" target="_blank">All Tops Page 5</a></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td><a href="https://www.myprotein.co.il/sports-nutrition/impact-eaa/11985042.html" target="_blank">Impact EAA</a></td>
+				</tr>
+				<tr>
+					<td>58</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-maroon/15446568.html" target="_blank">Training T-shirt Maroon</a></td>
+				</tr>
+				<tr>
+					<td>59</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-black/14680344.html" target="_blank">Training T-shirt Black</a></td>
+				</tr>
+				<tr>
+					<td>60</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-white/14680353.html" target="_blank">Training T-shirt White</a></td>
+				</tr>
+				<tr>
+					<td>61</td>
+					<td><a href="https://www.myprotein.co.il/sports-clothing/mp-men-s-training-short-sleeve-t-shirt-navy/14680362.html" target="_blank">Training T-shirt Navy</a></td>
+				</tr>
+			</table>
+
+			<br>
+			<strong>👥 Feedback from User 1:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>Page ID</th>
+					<th>URL</th>
+					<th>Relevant (1 for Yes, 0 for No)</th>
+				</tr>
+				<tr><td>0</td><td>Protein Snacks</td><td>1</td></tr>
+				<tr><td>7</td><td>Impact EAA</td><td>2</td></tr>
+				<tr><td>58</td><td>Training T-shirt Maroon</td><td>1</td></tr>
+				<tr><td>59</td><td>Training T-shirt Black</td><td>2</td></tr>
+				<tr><td>60</td><td>Training T-shirt White</td><td>1</td></tr>
+				<tr><td>61</td><td>Training T-shirt Navy</td><td>2</td></tr>
+				<tr><td>5</td><td>All Tops Page 4</td><td>1</td></tr>
+				<tr><td>4</td><td>All Tops Page 3</td><td>1</td></tr>
+				<tr><td>6</td><td>All Tops Page 5</td><td>1</td></tr>
+				<tr><td>2</td><td>All Tops</td><td>1</td></tr>
+			</table>
+
+			<br>
+			<strong>👥 Feedback from User 2:</strong><br>
+			<table border="1" style="border-collapse: collapse; width: 100%;">
+				<tr>
+					<th>Page ID</th>
+					<th>URL</th>
+					<th>Relevant (1 for Yes, 0 for No)</th>
+				</tr>
+				<tr><td>0</td><td>Protein Snacks</td><td>1</td></tr>
+				<tr><td>7</td><td>Impact EAA</td><td>2</td></tr>
+				<tr><td>58</td><td>Training T-shirt Maroon</td><td>1</td></tr>
+				<tr><td>59</td><td>Training T-shirt Black</td><td>2</td></tr>
+				<tr><td>60</td><td>Training T-shirt White</td><td>1</td></tr>
+				<tr><td>61</td><td>Training T-shirt Navy</td><td>2</td></tr>
+				<tr><td>5</td><td>All Tops Page 4</td><td>1</td></tr>
+				<tr><td>4</td><td>All Tops Page 3</td><td>1</td></tr>
+				<tr><td>6</td><td>All Tops Page 5</td><td>2</td></tr>
+				<tr><td>2</td><td>All Tops</td><td>2</td></tr>
+			</table>
+			
+			 <br>
+			<strong>🛠 איך ניתן לשפר את התוצאות?</strong><br>
+			<p>
+				אנחנו חושבים שיהיה טוב להתחשב במידע על המשתמש כמו תחביבים, חיפושים קודמים והעדפות אחרות בזמן שאנחנו מדרגים את הקישורים הנתונים.
+			</p>
+			</div>
         </section>
     </main>
     <footer>
-        <p>כל הזכויות שמורות</p>
+        כל הזכויות שמורות
     </footer>
 </body>
 </html>
